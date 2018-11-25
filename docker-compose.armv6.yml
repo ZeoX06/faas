@@ -132,8 +132,8 @@ services:
             resources:
                 limits:
                     memory: 500M
-                reservations:
-                    memory: 200M
+           #     reservations:
+           #         memory: 200M
 
     alertmanager:
         image: alexellis2/alertmanager-armhf:0.5.1
