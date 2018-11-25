@@ -6,6 +6,11 @@ export arch=$(uname -m)
 
 export eTAG="latest-dev"
 
+if [ "$arch" = "armv6l" ] ; then
+   dockerfile="Dockerfile.armv6"
+   eTAG="latest-armv6-dev"
+fi
+
 if [ "$arch" = "armv7l" ] ; then
    dockerfile="Dockerfile.armhf"
    eTAG="latest-armhf-dev"
@@ -14,6 +19,9 @@ fi
 echo "$1"
 if [ "$1" ] ; then
   eTAG=$1
+  if [ "$arch" = "armv6l" ] ; then
+    eTAG="$1-armv6"
+  fi
   if [ "$arch" = "armv7l" ] ; then
     eTAG="$1-armhf"
   fi

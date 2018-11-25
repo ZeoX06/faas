@@ -9,6 +9,15 @@ if [ "$arch" = "armv7l" ] ; then
     exit 1
 fi
 
+if [ "$arch" = "armv6l" ] ; then
+    # Todo: remove later, only for testing arm32v6
+    echo "Building only armv6 watchdog."
+    docker build -f Dockerfile.armv6 -t buildoutput .
+    docker run --name buildoutput --rm -d buildoutput:latest sh -c "sleep 10"
+    docker cp buildoutput:/go/src/github.com/openfaas/faas/watchdog/watchdog-armv6 ./fwatchdog-armv6
+    exit 1
+fi
+
 cd ..
 GIT_COMMIT=$(git rev-list -1 HEAD)
 VERSION=$(git describe --all --exact-match `git rev-parse HEAD` | grep tags | sed 's/tags\///')
