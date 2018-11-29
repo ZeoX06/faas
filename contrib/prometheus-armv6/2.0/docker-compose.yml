@@ -2,6 +2,6 @@ version: "3"
 
 services:
   prometheus:
-    image: arm32v6/prometheus:2.0
+    image: zeox06/prometheus:2.0-armv6
     build:
       context: .

@@ -3,7 +3,7 @@ services:
     gateway:
         ports:
             - 8080:8080
-        image: openfaas/gateway:latest-armv6-dev
+        image: zeox06/gateway:latest-armv6
         networks:
             - functions
         environment:
@@ -109,7 +109,7 @@ services:
     # Start monitoring
 
     prometheus:
-        image: arm32v6/prometheus:2.0
+        image: zeox06/prometheus:2.0-armv6
         environment:
             no_proxy: "gateway"
         configs:
