@@ -28,5 +28,5 @@ ENV https_proxy     ""
 COPY --from=0 /go/src/github.com/openfaas/faas/gateway/gateway    .
 
 COPY assets     assets
-#RUN sed -ie s/store.json/store-armv6.json/g /root/assets/script/funcstore.js
+RUN sed -i 's|openfaas/store/master/store.json|ZeoX06/store/master/store-armv6.json|g' assets/script/funcstore.js
 CMD ["./gateway"]
